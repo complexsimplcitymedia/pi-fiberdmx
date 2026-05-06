@@ -1,0 +1,29 @@
+[Unit]
+Description=HardInfo2 System Monitor Web Server (Host)
+Documentation=https://github.com/hardinfo2/hardinfo2
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=laser-dmx
+Group=laser-dmx
+WorkingDirectory=/home/laser-dmx/fiber-laser-dmx/scripts
+
+# Run Python web server wrapper for HardInfo2
+# This runs on the HOST (not in Docker)
+ExecStart=/home/laser-dmx/miniconda3/envs/fiber-laser-dmx/bin/python3 /home/laser-dmx/fiber-laser-dmx/scripts/hardinfo2_server.py
+
+# Restart policy
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=hardinfo2-web
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,4 @@
+# Fiber Laser DMX Caddy Configuration
+laser-dmx.local, 100.110.82.25, localhost {
+    reverse_proxy localhost:8080
+}

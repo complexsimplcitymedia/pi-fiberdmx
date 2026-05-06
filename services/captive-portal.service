@@ -1,0 +1,14 @@
+[Unit]
+Description=Captive Portal for Laser DMX Hotspot
+After=network-online.target dnsmasq.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/laser-dmx/fiber-laser-dmx/scripts/captive_portal.py
+Restart=on-failure
+RestartSec=10
+User=laser-dmx
+
+[Install]
+WantedBy=multi-user.target

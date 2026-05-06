@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Laser DMX Boot
+Description=Custom boot animation for Fiber Laser DMX Controller
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/laser-dmx
+ScriptFile=/usr/share/plymouth/themes/laser-dmx/laser-dmx.script

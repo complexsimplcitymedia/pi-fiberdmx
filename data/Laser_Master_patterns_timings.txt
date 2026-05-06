@@ -1,0 +1,27 @@
+ 1. A .12s,.12s,.36s,.84s - D .36s,.12s,.12s,.12s,.12s,.84s - 1 .12s,.12s,.36s,.12s,.36s,.12s,.36s,.12s,.36s,.99s
+ 2. A .12s,.12s,.36s,.84s - D .36s,.12s,.12s,.12s,.12s,.84s - 2 .12s,.12s,.12s,.12s,.36s,.12s,.36s,.12s,.36s,.99s
+ 3. A .12s,.12s,.36s,.84s - D .36s,.12s,.12s,.12s,.12s,.84s - 3 .12s,.12s,.12s,.12s,.12s,.12s,.36s,.12s,.36s,.99s
+ 4. A .12s,.12s,.36s,.84s - G .36s,.12s,.36s,.12s,.12s,.84s - 4 .12s,.12s,.12s,.12s,.12s,.12s,.12s,.12s,.36s,.99s
+ 5. A .12s,.12s,.36s,.84s - G .36s,.12s,.36s,.12s,.12s,.84s - 5 .12s,.12s,.12s,.12s,.12s,.12s,.12s,.12s,.12s,.99s
+ 6. A .12s,.12s,.36s,.84s - G .36s,.12s,.36s,.12s,.12s,.84s - 6 .36s,.12s,.12s,.12s,.12s,.12s,.12s,.12s,.12s,.99s
+ 7. A .12s,.12s,.36s,.84s - U .12s,.12s,.12s,.12s,.36s,.84s - 7 .12s,.12s,.36s,.12s,.36s,.12s,.36s,.12s,.36s,.99s
+ 8. A .12s,.12s,.36s,.84s - U .12s,.12s,.12s,.12s,.36s,.84s - 8 .12s,.12s,.12s,.12s,.36s,.12s,.36s,.12s,.36s,.99s
+ 9. A .12s,.12s,.36s,.84s - U .12s,.12s,.12s,.12s,.36s,.84s - 9 .12s,.12s,.12s,.12s,.12s,.12s,.36s,.12s,.36s,.99s
+10. A .12s,.12s,.36s,.84s - U .12s,.12s,.12s,.12s,.36s,.84s -10 .12s,.12s,.12s,.12s,.12s,.12s,.12s,.12s,.36s,.99s
+11. A .12s,.12s,.36s,.84s - U .12s,.12s,.12s,.12s,.36s,.84s -11 .12s,.12s,.12s,.12s,.12s,.12s,.12s,.12s,.12s,.99s
+12. A .12s,.12s,.36s,.84s - U .12s,.12s,.12s,.12s,.36s,.84s -12 .36s,.12s,.12s,.12s,.12s,.12s,.12s,.12s,.12s,.99s
+
+
+                             ON      OFF     ON     OFF                                          ON     OFF      ON      OFF     ON      OFF                                                             ON      OFF     ON      OFF     ON      OFF     ON      OFF     ON     OFF
+1	Fiber	A	Dot, Dash	0.12	0.12	0.36	0.84= 1.44		RED	    D   Dash, Dot, Dot	0.36	0.12	0.12	0.12	0.12	0.84= 1.68		1	Standard Morse Digits	Dot,Dash,Dash,Dash,ash	0.12	0.12	0.36	0.12	0.36	0.12	0.36	0.12	0.36	0.99= 2.94	Restart
+2	Fiber	A	Dot, Dash	0.12	0.12	0.36	0.84= 1.44		RED	    D	Dash, Dot, Dot	0.36	0.12	0.12	0.12	0.12	0.84= 1.68		2	Standard Morse Digits	Dot,Dot,Dash,Dash, Dash 0.12	0.12	0.12	0.12	0.36	0.12	0.36	0.12	0.36	0.99= 2.67	Restart
+3	Fiber	A	Dot, Dash	0.12	0.12	0.36	0.84= 1.44		RED	    D	Dash, Dot, Dot	0.36	0.12	0.12	0.12	0.12	0.84= 1.68		3	Standard Morse Digits	Dot,Dot,Dot,Dash, Dash	0.12	0.12	0.12	0.12	0.12	0.12	0.36	0.12	0.36	0.99= 2.55	Restart
+4	Fiber	A	Dot, Dash	0.12	0.12	0.36	0.84= 1.44		Green	G	Dash, Dash, Dot	0.36	0.12	0.36	0.12	0.12	0.84= 1.92		4	Standard Morse Digits	Dot,Dot,Dot,Dot, Dash	0.12	0.12	0.12	0.12	0.12	0.12	0.12	0.12	0.36	0.99= 2.31	Restart
+5	Fiber	A	Dot, Dash	0.12	0.12	0.36	0.84= 1.44		Green	G	Dash, Dash, Dot	0.36	0.12	0.36	0.12	0.12	0.84= 1.92		5	Standard Morse Digits	Dot,Dot,Dot,Dot, Dot	0.12	0.12	0.12	0.12	0.12	0.12	0.12	0.12	0.12	0.99= 2.07	Restart
+6	Fiber	A	Dot, Dash	0.12	0.12	0.36	0.84= 1.44		Green	G	Dash, Dash, Dot	0.36	0.12	0.36	0.12	0.12	0.84= 1.92		6	Standard Morse Digits	Dash,Dot,Dot,Dot, Dot	0.36	0.12	0.12	0.12	0.12	0.12	0.12	0.12	0.12	0.99= 2.31	Restart
+7	Fiber	A	Dot, Dash	0.12	0.12	0.36	0.84= 1.44		Infared	U	Dot, Dot, Dash	0.12	0.12	0.12	0.12	0.36	0.84= 1.68		7	Standard Morse Digits	Dot,Dash,Dash,Dash,Dash	0.12	0.12	0.36	0.12	0.36	0.12	0.36	0.12	0.36	0.99= 2.94	Restart
+8	Fiber	A	Dot, Dash	0.12	0.12	0.36	0.84= 1.44		Infared	U	Dot, Dot, Dash	0.12	0.12	0.12	0.12	0.36	0.84= 1.68		8	Standard Morse Digits	Dot,Dot,Dash,Dash, Dash	0.12	0.12	0.12	0.12	0.36	0.12	0.36	0.12	0.36	0.99= 2.67	Restart
+9	Fiber	A	Dot, Dash	0.12	0.12	0.36	0.84= 1.44	    Infared	U	Dot, Dot, Dash	0.12	0.12	0.12	0.12	0.36	0.84= 1.68		9	Standard Morse Digits	Dot,Dot,Dot,Dash, Dash	0.12	0.12	0.12	0.12	0.12	0.12	0.36	0.12	0.36	0.99= 2.55	Restart
+10	Fiber	A	Dot, Dash	0.12	0.12	0.36	0.84= 1.44		Infared	U	Dot, Dot, Dash	0.12	0.12	0.12	0.12	0.36	0.84= 1.68		10	Standard Morse Digits	Dot,Dot,Dot,Dot, Dash	0.12	0.12	0.12	0.12	0.12	0.12	0.12	0.12	0.36	0.99= 2.31	Restart
+11	Fiber	A	Dot, Dash	0.12	0.12	0.36	0.84= 1.44		Infared	U	Dot, Dot, Dash	0.12	0.12	0.12	0.12	0.36	0.84= 1.68		11	Standard Morse Digits	Dot,Dot,Dot,Dot, Dot	0.12	0.12	0.12	0.12	0.12	0.12	0.12	0.12	0.12	0.99= 2.07	Restart
+12	Fiber	A	Dot, Dash	0.12	0.12	0.36	0.84= 1.44		Infared	U	Dot, Dot, Dash	0.12	0.12	0.12	0.12	0.36	0.84= 1.68		12	Standard Morse Digits	Dash,Dot,Dot,Dot, Dot	0.36	0.12	0.12	0.12	0.12	0.12	0.12	0.12	0.12	0.99= 2.31	Restart

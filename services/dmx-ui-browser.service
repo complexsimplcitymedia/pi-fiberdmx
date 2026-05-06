@@ -1,0 +1,18 @@
+[Unit]
+Description=Chromium Kiosk
+Wants=graphical.target dmx-ui.service caddy.service
+After=graphical.target dmx-ui.service caddy.service display-manager.service
+PartOf=graphical.target
+
+[Service]
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/laser-dmx/.Xauthority
+Type=simple
+ExecStart=/usr/bin/python3 /home/laser-dmx/fiber-laser-dmx/services/dmx-kiosk.py
+Restart=on-abort
+RestartSec=5
+User=laser-dmx
+Group=laser-dmx
+
+[Install]
+WantedBy=graphical.target

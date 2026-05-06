@@ -1,0 +1,13 @@
+[Unit]
+Description=Auto Git Sync for services directory
+After=network.target
+
+[Service]
+Type=simple
+User=laser-dmx
+WorkingDirectory=/home/laser-dmx/fiber-laser-dmx/services
+ExecStart=/home/laser-dmx/fiber-laser-dmx/services/git-auto-sync.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

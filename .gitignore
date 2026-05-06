@@ -1,0 +1,25 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Logs
+*.log
+/var/log/
+
+# Large boot animation files
+ui/bootanimation/*.mp4
+ui/bootanimation/*.gif
+
+# Backup files
+*.backup
+scripts/dmx_patterns.py.backup
+
+# IDE
+.vscode/
+.idea/
+*.pyc
+__pycache__/
+*.bak
+*.before_*

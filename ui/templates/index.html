@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Laser-DMX Controller</title>
+  <script>if(!sessionStorage.getItem("laser_dmx_intro_seen")){window.location.href="/splash";}</script>
+  <style>
+    :root{
+      --bg-0:#121417;
+      --bg-1:#1a1e23;
+      --bg-2:#252b31;
+      --bg-3:#343c44;
+      --text:#f2f5f9;
+      --muted:#aab3be;
+      --btn-top:#5f6770;
+      --btn-mid:#4a5159;
+      --btn-bot:#363c43;
+      --btn-edge:#111417;
+      --btn-press:#2a3036;
+      --accent:#6bb1ff;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+    body {
+      color: var(--text);
+      background: radial-gradient(1000px 500px at 50% -10%, var(--bg-3) 0%, var(--bg-2) 40%, var(--bg-1) 72%, var(--bg-0) 100%);
+      font-family: system-ui, sans-serif;
+      text-align: center;
+      padding: 2vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    img.logo {
+      max-height: clamp(40px, 10vw, 100px);
+      margin: 1.5vw auto;
+      display: block;
+      opacity: 0.51;
+    }
+    img.invert {
+      filter: invert(1) brightness(1.2) contrast(1.05);
+      opacity: 0.55;
+    }
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0;
+    }
+    .camera-container {
+      width: 100%;
+      margin: 1vw 0 2vw 0;
+      padding: 1vw;
+      background: linear-gradient(145deg, #0b0e12, #1b1f25);
+      border: 2px solid #000;
+      border-radius: 1vw;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,.85), 0 0 14px rgba(107,177,255,.28);
+    }
+    .camera-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 0.8vw;
+      display: block;
+    }
+    .screen {
+      width: 100%;
+      margin: 1vw 0 2vw 0;
+      padding: 1.5vw;
+      background: linear-gradient(145deg, #0b0e12, #1b1f25);
+      border: 2px solid #000;
+      border-radius: 1vw;
+      color: #9fd1ff;
+      font-family: "Courier New", monospace;
+      font-size: clamp(12px, 2vw, 18px);
+      box-shadow: inset 0 2px 6px rgba(0,0,0,.85), 0 0 14px rgba(107,177,255,.28);
+    }
+    h2 {
+      margin: 2vw 0 1.5vw;
+      font-size: clamp(20px, 3vw, 32px);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(100px, 15vw, 200px), 1fr));
+      gap: clamp(10px, 2vw, 20px);
+      margin: 2vw 0;
+      width: 100%;
+    }
+    button {
+      width: 100%;
+      height: clamp(50px, 10vw, 100px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(14px, 2.5vw, 20px);
+      font-weight: 600;
+      color: var(--text);
+      background: linear-gradient(to bottom, var(--btn-top), var(--btn-mid) 60%, var(--btn-bot));
+      border: 1px solid var(--btn-edge);
+      border-radius: 0.8vw;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 6px 12px rgba(0,0,0,.45);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      padding: 0;
+    }
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 8px 16px rgba(107,177,255,.3);
+    }
+    button:active {
+      transform: translateY(2px) scale(0.98);
+      background: var(--btn-press);
+    }
+    .bar {
+      margin: 2vw 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: clamp(8px, 1.5vw, 15px);
+      justify-content: center;
+      width: 100%;
+    }
+    .bar form {
+      flex: 1 1 clamp(150px, 20vw, 300px);
+      min-width: 150px;
+    }
+    .bar form button {
+      width: 100%;
+    }
+    .flash {
+      background: #0f1824;
+      border: 1px solid #263244;
+      color: #cfe4ff;
+      padding: 1vw;
+      border-radius: 0.6vw;
+      margin: 1vw auto;
+      font-size: clamp(12px, 1.8vw, 16px);
+    }
+    .footer {
+      margin-top: 2vw;
+      margin-bottom: 2vw;
+    }
+    @media (max-width: 640px) {
+      body { padding: 3vw; }
+      .grid { grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); }
+      button { font-size: 12px; }
+    }
+    @media (min-width: 1400px) {
+      .grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <img src="/logos/visionmap.png" alt="Vision Map" class="logo invert" />
+
+  {% if show_camera %}
+  <div style="width:min(92%, 420px); margin:10px auto 20px; padding:8px;
+              background: linear-gradient(145deg, #0b0e12, #1b1f25);
+              border:2px solid #000; border-radius:10px;
+              box-shadow: inset 0 2px 6px rgba(0,0,0,.85), 0 0 14px rgba(107,177,255,.28);">
+    <img src="/video_feed" alt="Camera Feed" style="width:100%; border-radius:8px; display:block;">
+  </div>
+  {% endif %}
+
+  <div id="statusScreen" class="screen">
+    <div><strong>Status:</strong> {{ status or 'Ready' }}</div>
+
+    <div style="margin-top: 12px; border-top: 1px dotted #2a4263; padding-top: 8px;">
+      <div id="channelMode" class="flash-mode-title" style="font-weight: bold; font-size:14px;" data-mode="{{ channel_mode }}">
+        CHANNEL MODE: <span id="modeText" style="font-weight: bold;">{{ channel_mode_text }}</span>
+      </div>
+      <div style="font-size:12px; color:#77b8ff; margin-top:6px;">
+        Mode controls CH 1-6. Toggle &lt;-&gt; Pattern for single-channel testing.
+      </div>
+    </div>
+    {% if messages %}
+      {% for m in messages %}<div class="flash">{{ m }}</div>{% endfor %}
+    {% endif %}
+  </div>
+
+  <div class="grid">
+    {% for n in range(1,13) %}
+      <form method="post" action="/play/{{n}}">
+        <input type="hidden" name="level" value="255"/>
+        <button type="submit">CH {{n}}</button>
+        <div style="font-size:12px; color:var(--muted);">
+          {% if quick.get(n) and quick[n]|length >= 2 %}
+            {{ quick[n][0] }} {{ quick[n][1] }}
+          {% elif quick.get(n) %}
+            {{ quick[n][0] }}
+          {% else %}
+            (map?)
+          {% endif %}
+        </div>
+      </form>
+    {% endfor %}
+
+    <form method="post" action="/ols"><button type="submit">OLS</button></form>
+    <form method="post" action="/otdr"><button type="submit">OTDR</button></form>
+    <form method="post" action="/remote_view"><button type="submit"><div>Remote</div><div>View</div></button></form>
+  </div>
+
+  <h2>Test / Control</h2>
+  <div class="bar">
+    <form method="post" action="/sweep">
+      <label>Cycles Each:</label>
+      <input name="loops" type="number" min="1" max="20" value="1"/>
+      <input type="hidden" name="level" value="255"/>
+      <button type="submit">Test Channels</button>
+    </form>
+
+    <form method="post" action="/channel_mode_toggle">
+      <button type="submit" id="channel-mode-btn">
+        CH 1-6 Mode Toggle
+        <br><small>Pattern/VFL</small>
+      </button>
+    </form>
+
+    <form method="post" action="/flash_vis">
+      <button type="submit">Flash VIS (1-6)</button>
+    </form>
+
+    <form method="post" action="/flash_ir">
+      <button type="submit">Flash IR (7-12)</button>
+    </form>
+
+    <form method="post" action="/stop">
+      <button type="submit">Stop</button>
+    </form>
+
+    <form method="post" action="/shutdown" onsubmit="return confirm('Power off safely?');">
+      <button type="submit">Shutdown</button>
+    </form>
+
+    <form method="get" action="/wifi">
+      <button type="submit">Wi-Fi Options</button>
+    </form>
+  </div>
+
+  <div class="footer">
+    <img src="/logos/mfsdmx.png" alt="MFS-DMX" class="logo" />
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+          const action = form.getAttribute('action');
+          
+          if (action === '/remote_view' || action === '/wifi' || action === '/shutdown') {
+            return;
+          }
+          
+          e.preventDefault();
+          
+          const formData = new FormData(form);
+          const method = form.getAttribute('method') || 'GET';
+          
+          fetch(action, {
+            method: method.toUpperCase(),
+            body: method.toUpperCase() === 'POST' ? formData : null
+          })
+          .then(response => response.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const newStatus = doc.querySelector('#statusScreen');
+            if (newStatus) {
+              document.querySelector('#statusScreen').innerHTML = newStatus.innerHTML;
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            const statusDiv = document.querySelector('#statusScreen');
+            if (statusDiv) {
+              statusDiv.innerHTML = '<div style="color:#ff6b6b;">Error: ' + error.message + '</div>';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Wi-Fi Options (wlan1)</title>
+  <style>
+    body { 
+      font-family: system-ui, sans-serif; 
+      background:#111; 
+      color:#eee; 
+      margin:16px; 
+    }
+    h2,h3 { color:#0ff; }
+    .row { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin:8px 0; }
+    table { border-collapse:collapse; width:100%; background:#222; }
+    th,td { border:1px solid #444; padding:6px; font-size:14px; }
+    th { background:#333; color:#0ff; }
+    td { color:#eee; }
+    .flash { background:#1a2333; padding:8px 12px; border-radius:6px; margin:8px 0; color:#0ff; }
+    button, input, a { 
+      background:#0ff; 
+      color:#000; 
+      border:none; 
+      border-radius:4px; 
+      padding:6px 10px; 
+      font-size:14px; 
+      text-decoration:none; 
+    }
+    input { background:#fff; color:#000; }
+    a { display:inline-block; text-align:center; }
+  </style>
+</head>
+<body>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}{% for m in messages %}<div class="flash">{{ m }}</div>{% endfor %}{% endif %}
+  {% endwith %}
+
+  <h2>Wi-Fi Options (USB Wi-Fi on wlan1)</h2>
+
+  <form class="row" method="get" action="/wifi">
+    <button type="submit">Refresh</button>
+    <a href="/" style="margin-left:auto">Back</a>
+  </form>
+
+  <form class="row" method="post" action="/wifi/connect">
+    <input name="ssid" placeholder="SSID" required/>
+    <input name="password" placeholder="Password (if any)"/>
+    <label style="color:#ccc;"><input type="checkbox" name="persist" value="1"/> Make persistent</label>
+    <button type="submit">Connect</button>
+    <a href="/wifi/status">Status</a>
+  </form>
+
+  <h3>Nearby Networks</h3>
+  <table>
+    <tr><th>SSID</th><th>Signal</th><th>Security</th></tr>
+    {% for n in nets %}
+      <tr><td>{{n.ssid}}</td><td>{{n.signal}}</td><td>{{n.sec}}</td></tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
+

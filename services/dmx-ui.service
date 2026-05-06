@@ -1,0 +1,16 @@
+[Unit]
+Description=Fiber Laser DMX UI Web Application
+After=network.target
+
+[Service]
+Type=simple
+User=laser-dmx
+WorkingDirectory=/home/laser-dmx/fiber-laser-dmx
+Environment="PATH=/home/laser-dmx/miniconda3/envs/fiber-laser-dmx/bin:/usr/local/bin:/usr/bin:/bin"
+ExecStart=/home/laser-dmx/miniconda3/envs/fiber-laser-dmx/bin/python /home/laser-dmx/fiber-laser-dmx/ui/dmx_ui.py
+Restart=always
+RestartSec=10
+TimeoutStartSec=120
+
+[Install]
+WantedBy=multi-user.target

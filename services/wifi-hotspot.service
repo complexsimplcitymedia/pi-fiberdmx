@@ -1,0 +1,15 @@
+[Unit]
+Description=Fiber Laser DMX WiFi Hotspot (wlan0)
+After=network.target bootsplash.service
+Wants=network.target
+BindsTo=bootsplash.service
+
+[Service]
+Type=oneshot
+ExecStartPre=/bin/sleep 90
+ExecStart=/usr/bin/nmcli connection up FiberLaserHotspot
+ExecStop=/usr/bin/nmcli connection down FiberLaserHotspot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

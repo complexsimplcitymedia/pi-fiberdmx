@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Loading...</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+    #splash-gif {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <img id="splash-gif" src="/logos/splash.gif" alt="Loading">
+  <script>
+    if (sessionStorage.getItem('laser_dmx_intro_seen')) {
+      window.location.href = '/';
+    } else {
+      setTimeout(function() {
+        sessionStorage.setItem('laser_dmx_intro_seen', 'true');
+        window.location.href = '/';
+      }, 24000);
+    }
+  </script>
+</body>
+</html>

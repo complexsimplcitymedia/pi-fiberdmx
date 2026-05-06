@@ -1,0 +1,12 @@
+[Unit]
+Description=Ensure fiber-laser Conda environment is always active
+After=network.target
+
+[Service]
+Type=oneshot
+User=laser-dmx
+ExecStart=/bin/bash -c 'source /home/laser-dmx/.bashrc'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
